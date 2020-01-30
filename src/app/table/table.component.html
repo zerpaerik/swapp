@@ -1,0 +1,14 @@
+<div class="w-2/3 mx-auto">
+    <div class="table-container">
+        <table class="table">
+            <thead>
+                <th class="thead bg-grey-lightest text-grey-dark border-grey-light" *ngFor="let col of cols">{{col.title}}</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of datasource;">
+                    <td class="py-4 px-6 border-b border-grey-light" *ngFor="let col of cols">{{data[col.key]}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+.table-container {
+    @apply bg-white;
+    @apply shadow-md;
+    @apply rounded my-6;
+}
+
+.table {
+    @apply text-left;
+    @apply  w-full;
+    @apply border-collapse;
+}
+
+.thead {
+    @apply py-4;
+    @apply px-6;
+    @apply font-bold;
+    @apply uppercase;
+    @apply text-sm;
+    @apply border-b;
+}

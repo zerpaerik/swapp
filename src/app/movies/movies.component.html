@@ -1,15 +1,2 @@
 <p>Peliculas: </p>
-<table>
-    <thead>
-        <th>title</th>
-        <th>episode</th>
-        <th>release date</th>
-    </thead>
-    <tbody *ngIf="movies">
-        <tr *ngFor="let movie of movies.results">
-            <td>{{movie.title}}</td>
-            <td>{{movie.episode_id}}</td>
-            <td>{{movie.release_date}}</td>
-        </tr>
-    </tbody>
-</table>
+<app-table *ngIf="movies" [datasource]="movies.results" [cols]="cols"></app-table>

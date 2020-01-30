@@ -17,4 +17,11 @@ export class Movie extends Model{
         edited: Date,
         url: string
     }>
+
+    static cols = [
+        {title: 'Title', key: 'title'},
+        {title: 'Episode', key: 'episode_id'},
+        {title: 'Director', key: 'director'},
+        {title: 'Release date', key: 'release_date'}
+    ];
 }
