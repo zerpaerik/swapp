@@ -22,6 +22,7 @@ export class Movie extends Model{
         {title: 'Title', key: 'title'},
         {title: 'Episode', key: 'episode_id'},
         {title: 'Director', key: 'director'},
+        {title: 'Characters', key:'characters', render: (c: Array<any>) => c.length},
         {title: 'Release date', key: 'release_date'}
     ];
 }

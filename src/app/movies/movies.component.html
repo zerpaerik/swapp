@@ -1,2 +1,15 @@
-<p>Peliculas: </p>
-<app-table *ngIf="movies" [datasource]="movies.results" [cols]="cols"></app-table>
+<app-table 
+    *ngIf="!openingConfig.show"
+    [datasource]="movies ? movies.results : null" 
+    [cols]="cols"
+    (rowclicked)="movieRowClicked($event)">
+</app-table>
+
+<app-opening 
+    *ngIf="openingConfig.show"
+    [stars]="openingConfig.stars"
+    [crawl]="openingConfig.opening_crawl"
+    [episode]="openingConfig.episode"
+    [title]="openingConfig.title"
+    (onclose)="closeOpening()"
+></app-opening>
