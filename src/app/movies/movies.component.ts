@@ -14,6 +14,8 @@ export class MoviesComponent implements OnInit {
   showOpening = false;
   openingTimeOut;
   openingConfig: {stars: number|0, opening_crawl:string, episode:string|number, title:string, show: boolean};
+  showCharacters = false;
+
   constructor(private movieService: MovieService) { }
 
   ngOnInit() {
@@ -27,9 +29,16 @@ export class MoviesComponent implements OnInit {
       case "title":
         this.setOpening(e.row);
         break;
+      case "characters":
+        this.openOrCloseCharacters();
+        break;
       default:
         break;
     }
+  }
+
+  openOrCloseCharacters() {
+    this.showCharacters = !this.showCharacters;
   }
 
   setOpening({title, episode_id, opening_crawl}) {

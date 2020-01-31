@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input } from '@angular/core';
 
 @Component({
   selector: 'app-characters',
   templateUrl: './characters.component.html',
   styleUrls: ['./characters.component.scss']
 })
-export class CharactersComponent implements OnInit {
-
+export class CharactersComponent implements OnInit, OnChanges {
+  @Input('show') show = false;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(change: SimpleChanges) {
+    if(change.show) {
+      this.show = change.show.currentValue;
+    }
+  }
+
+  visible(){
+    return this.show;
   }
 
 }
