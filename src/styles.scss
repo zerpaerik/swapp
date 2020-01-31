@@ -3,10 +3,13 @@
 @import 'tailwindcss/utilities';
 @import 'custom-tailwindcss/table.scss';
 
-html {
+.fade-in{animation:fade-in 4s cubic-bezier(.39,.575,.565,1.000) both}
+@keyframes fade-in{0%{opacity:0}100%{opacity:1}}
+#opening-container {
+    animation: fade-in;
     margin: 0;
     background-color: black;
-  }
+}
   
   .star {
     position: absolute;
@@ -21,7 +24,7 @@ html {
       top: 30%;
       left: 35%;
       z-index: 1;
-      animation: intro 6s ease-out 1s;
+      animation: intro 4s ease-out 1s;
       color: rgb(75, 213, 238);
       font-weight: 400;
       font-size: 300%;
@@ -50,7 +53,7 @@ html {
       left: 45%;
       z-index: 1;
       margin: auto;
-      animation: logo 9s ease-out 9s;
+      animation: logo 5s ease-out 5s;
       opacity: 0;
   }
   
@@ -108,7 +111,7 @@ html {
   
   /* Set the scrolling animation and position it */
   #content {
-    animation: scroll 100s linear 16s;
+    animation: scroll 100s linear 10s;
     position: absolute;
     top: 100%;
   }

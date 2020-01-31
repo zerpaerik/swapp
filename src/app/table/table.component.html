@@ -2,8 +2,17 @@
     <div class="table-container mx-3">
         <table class="table">
             <thead>
+                <th>
+                    <input 
+                        (keyup)="this.search.next($event.target.value)"
+                        placeholder="Search 🔎"
+                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-800 p-1"
+                        type="text">
+                </th>
+            </thead>
+            <thead>
                 <th
-                 class="thead bg-grey-lightest text-grey-dark border-grey-light"
+                 class="thead bg-grey-lightest text-grey-dark border-grey-light cursor-pointer"
                  *ngFor="let col of cols"
                  (click)="sortHeader($event, col)"
                  >
@@ -18,7 +27,7 @@
             <tbody *ngIf="!loading && datasource.length > 0; else empty">
                 <tr *ngFor="let data of datasource;">
                     <td 
-                    class="py-4 px-6 border-b border-grey-light hover:text-teal-700 cursor-pointer"
+                    class="py-4 px-6 border-b border-grey-light hover:text-blue-800 cursor-pointer"
                     *ngFor="let col of cols" (click)="handleRowClick($event, data, col)">
                         
                         <span *ngIf="col.render; else simpleRecord">{{col.render(data[col.key])}}</span>
