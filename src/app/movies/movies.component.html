@@ -5,6 +5,10 @@
     (rowclicked)="movieRowClicked($event)">
 </app-table>
 
+<app-characters 
+    class="character-list absolute right-0 top-0 bg-white h-screen p-3 pt-10 shadow overflow-y-scroll overflow-x-hidden">
+</app-characters>
+
 <app-opening 
     *ngIf="openingConfig.show"
     [stars]="openingConfig.stars"

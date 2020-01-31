@@ -12,6 +12,7 @@ export class MoviesComponent implements OnInit {
   movies: Movie;
   cols = Movie.cols;
   showOpening = false;
+  openingTimeOut;
   openingConfig: {stars: number|0, opening_crawl:string, episode:string|number, title:string, show: boolean};
   constructor(private movieService: MovieService) { }
 
@@ -33,15 +34,16 @@ export class MoviesComponent implements OnInit {
 
   setOpening({title, episode_id, opening_crawl}) {
     this.openingConfig = {title, episode: episode_id, opening_crawl, stars: 200, show: true};
-    setTimeout(() => {
+    this.openingTimeOut = setTimeout(() => {
       if(this.openingConfig.show){
-        this.closeOpening();  
+        this.closeOpening();
       }
     }, 48000);
   }
 
   closeOpening() {
-    this.openingConfig.show = false;
+    this.openingConfig = {title:'', episode: '', opening_crawl:'', stars: 0, show: false};
+    clearTimeout(this.openingTimeOut);
   }
 
   setMovies = (movies: Movie) => {

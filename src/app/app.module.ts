@@ -11,7 +11,7 @@ import { TableComponent } from './table/table.component';
 import { toRoman } from './pipes/roman.pipe';
 import { langInterceptor } from './services/lang.interceptor';
 import { OpeningComponent } from './opening/opening.component';
-import { CharactersComponent } from './characters/characters.component';
+import { CharactersComponent, CharComponent } from './characters/characters.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { CharactersComponent } from './characters/characters.component';
     TableComponent,
     OpeningComponent,
     toRoman,
-    CharactersComponent
+    CharactersComponent,
+    CharComponent
   ],
   imports: [
     BrowserModule,
