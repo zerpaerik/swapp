@@ -1,0 +1,40 @@
+<div class="w-2/3 mx-auto">
+    <div class="table-container mx-3">
+        <table class="table">
+            <thead>
+                <th
+                 class="thead bg-grey-lightest text-grey-dark border-grey-light"
+                 *ngFor="let col of cols"
+                 (click)="sortHeader($event, col)"
+                 >
+                     {{col.title}}
+                </th>
+            </thead>
+
+            <ng-template *ngIf="loading">
+                    <span class="text-gray-500 mx-auto">Loading</span>   
+            </ng-template>
+
+            <tbody *ngIf="!loading && datasource.length > 0; else empty">
+                <tr *ngFor="let data of datasource;">
+                    <td 
+                    class="py-4 px-6 border-b border-grey-light hover:text-teal-700 cursor-pointer"
+                    *ngFor="let col of cols" (click)="handleRowClick($event, data, col)">
+                        
+                        <span *ngIf="col.render; else simpleRecord">{{col.render(data[col.key])}}</span>
+
+                        <ng-template #simpleRecord>
+                            {{data[col.key]}}
+                        </ng-template>
+                    
+                    </td>
+                </tr>
+            </tbody>
+
+            <ng-template *ngIf="!loading" #empty>
+                <span class="text-gray-500 mx-auto">No Data</span>   
+            </ng-template>
+        
+        </table>
+    </div>
+</div>
