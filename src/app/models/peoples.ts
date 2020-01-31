@@ -15,7 +15,6 @@ export class Peoples extends Model{
         species : string,
         starships : string,
         vehicles  : string,
-        url : string,
         created : string,
         edited: string,
         url: string

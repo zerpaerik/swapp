@@ -1,6 +1,6 @@
 import { Model } from './model';
 
-export class Starships extends Model{
+export class Starship extends Model{
     results: Array<{
         name: string,
         model   : string,
@@ -21,6 +21,14 @@ export class Starships extends Model{
         created  : string,
         edited  : string
     }>
+
+        static cols = [
+        {title: 'Name', key: 'name'},
+        {title: 'Model', key: 'model'},
+        {title: 'Starship Class', key: 'starship_class'},
+        {title: 'Manufacturer', key: 'manufacturer'},
+        {title: 'Cost in Credist', key: 'cost_in_credits'}
+    ];
 
    
 }

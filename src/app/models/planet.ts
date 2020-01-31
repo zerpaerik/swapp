@@ -1,6 +1,6 @@
 import { Model } from './model';
 
-export class Planets extends Model{
+export class Planet extends Model{
     results: Array<{
         name: string,
         diameter  : string,
@@ -16,6 +16,15 @@ export class Planets extends Model{
         created  : string,
         edited  : string
     }>
+
+      static cols = [
+        {title: 'Name', key: 'name'},
+        {title: 'Diameter', key: 'diameter'},
+        {title: 'Rotation Period', key: 'rotation_period'},
+        {title: 'Orbital Period', key: 'orbital_period'},
+        {title: 'Gravity', key: 'gravity'}
+    ];
+
 
    
 }

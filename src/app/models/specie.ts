@@ -1,6 +1,6 @@
 import { Model } from './model';
 
-export class Species extends Model{
+export class Specie extends Model{
     results: Array<{
         name: string,
         classification : string,
@@ -20,5 +20,13 @@ export class Species extends Model{
         edited  : string
     }>
 
-   
+     static cols = [
+        {title: 'Name', key: 'name'},
+        {title: 'Classification', key: 'classification'},
+        {title: 'Average Height', key: 'average_height'},
+        {title: 'Average Height', key: 'average_lifespan'},
+        {title: 'Eye Colors', key: 'eye_colors'}
+    ];
+
+  
 }
