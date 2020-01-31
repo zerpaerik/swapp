@@ -1,4 +1,4 @@
-<div  class="cursor-not-allowed" style="width: 100vw; height: 100vh;" (click)="closeMe($e)">
+<div id="opening-container" @fade class="cursor-not-allowed" style="width: 100vw; height: 100vh;" (click)="closeMe($e)">
 <section class="intro">
         A long time ago, in a galaxy far,<br> far away....
       </section>
@@ -94,13 +94,11 @@
       </svg>
       </section>
       
-      <!-- Change the text to your liking -->
       <div id="board">  
         <div id="content">
           <p id="title">Episode {{episode | roman}}</p>
           <p id="subtitle">{{title}}</p>
           <br>
-          <!-- And make it cheesy ! -->
           <p>{{opening_crawl}}</p>        
         </div>  
       </div>

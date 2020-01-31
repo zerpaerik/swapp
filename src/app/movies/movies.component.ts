@@ -26,7 +26,6 @@ export class MoviesComponent implements OnInit {
       case "title":
         this.setOpening(e.row);
         break;
-    
       default:
         break;
     }
@@ -38,12 +37,11 @@ export class MoviesComponent implements OnInit {
       if(this.openingConfig.show){
         this.closeOpening();  
       }
-    }, 100000);
+    }, 48000);
   }
 
   closeOpening() {
-    this.openingConfig = {title:'', episode:'', opening_crawl:'', stars: 0, show: false};
-    
+    this.openingConfig.show = false;
   }
 
   setMovies = (movies: Movie) => {
