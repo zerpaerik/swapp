@@ -17,7 +17,7 @@ export class PlanetsComponent implements OnInit {
   constructor(private planetService: PlanetService) { }
 
   ngOnInit() {
-    this.setPlanets("https://swapi.co/api/species/");
+    this.setPlanets("https://swapi.co/api/planets/");
   }
 
   reFetchOnPagination(url:string) {
