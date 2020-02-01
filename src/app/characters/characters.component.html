@@ -1,1 +1,26 @@
-<app-char *ngFor="let r of [1,2,3,4,5]"></app-char>
+<div 
+    class="absolute bg-gray-800 opacity-50 w-full h-screen top-0 right-0 z-30 cursor-pointer" 
+    (click)="closeme()"
+    *ngIf="movie && show">
+</div>
+<div 
+*ngIf="movie"
+class="character-list absolute 
+        right-0
+        top-0
+        bg-white
+        h-screen
+        px-3
+        w-2/5
+        pt-5
+        z-50
+        shadow
+        overflow-y-scroll
+        overflow-x-hidden
+        bg-gray-100
+        opacity-100"
+[class.invisible]="!show">
+<h1 class="text-xl text-gray-800 font-semibold">Characters from {{movie.title}}</h1>
+<app-char *ngFor="let char of movie.characters" [characterUrl]="char"></app-char>
+
+</div>

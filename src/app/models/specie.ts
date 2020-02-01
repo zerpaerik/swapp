@@ -24,7 +24,7 @@ export class Specie extends Model{
         {title: 'Name', key: 'name'},
         {title: 'Classification', key: 'classification'},
         {title: 'Average Height', key: 'average_height'},
-        {title: 'Average Height', key: 'average_lifespan'},
+        {title: 'Average Lifespan', key: 'average_lifespan'},
         {title: 'Eye Colors', key: 'eye_colors'}
     ];
 

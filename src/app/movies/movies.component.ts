@@ -15,6 +15,7 @@ export class MoviesComponent implements OnInit {
   openingTimeOut;
   openingConfig: {stars: number|0, opening_crawl:string, episode:string|number, title:string, show: boolean};
   showCharacters = false;
+  selectedMovieChars: any;
 
   constructor(private movieService: MovieService) { }
 
@@ -30,19 +31,23 @@ export class MoviesComponent implements OnInit {
         this.setOpening(e.row);
         break;
       case "characters":
-        this.openOrCloseCharacters();
+        this.openOrCloseCharacters(e.row);
         break;
       default:
         break;
     }
   }
 
-  openOrCloseCharacters() {
+  openOrCloseCharacters(row=null) {
     this.showCharacters = !this.showCharacters;
+    if(this.showCharacters && row){
+      this.selectedMovieChars = row;
+    }
   }
 
   setOpening({title, episode_id, opening_crawl}) {
     this.openingConfig = {title, episode: episode_id, opening_crawl, stars: 200, show: true};
+    this.showCharacters = false;
     this.openingTimeOut = setTimeout(() => {
       if(this.openingConfig.show){
         this.closeOpening();

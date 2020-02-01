@@ -7,7 +7,8 @@
 
 <app-characters 
     [show]="showCharacters"
-    class="character-list absolute right-0 top-0 bg-white h-screen p-3 pt-10 shadow overflow-y-scroll overflow-x-hidden">
+    (close)="openOrCloseCharacters()"
+    [movie]="selectedMovieChars">
 </app-characters>
 
 <app-opening 
