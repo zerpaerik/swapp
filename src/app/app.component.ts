@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MovieService } from './services/movie.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   title = 'swapp';
+  error;
+  constructor(private movieService: MovieService) {
+    this.movieService.onAnyError()
+      .subscribe(error => {
+        this.error = error;
+        setTimeout(() => {
+          this.error = null;
+        }, 5000)
+    });
+  }
+
 }
