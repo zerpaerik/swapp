@@ -3,47 +3,60 @@
         <table class="table">
             <thead>
                 <th colspan="100%">
-                    <input 
-                        (keyup)="this.search.next($event.target.value)"
-                        placeholder="Search 🔎"
+                    <input (keyup)="this.search.next($event.target.value)" placeholder="Search 🔎"
                         class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-800 p-1"
                         type="text">
                 </th>
             </thead>
             <thead>
-                <th
-                 class="thead bg-grey-lightest text-grey-dark border-grey-light cursor-pointer"
-                 *ngFor="let col of cols"
-                 (click)="sortHeader($event, col)"
-                 >
-                     {{col.title}}
+                <th class="thead bg-grey-lightest text-grey-dark border-grey-light cursor-pointer"
+                    *ngFor="let col of cols" (click)="sortHeader($event, col)">
+                    {{col.title}}
                 </th>
             </thead>
 
             <ng-template *ngIf="loading">
-                    <span class="text-gray-500 mx-auto">Loading</span>   
+                <span class="text-gray-500 mx-auto">Loading</span>
             </ng-template>
 
             <tbody *ngIf="!loading && datasource.length > 0; else empty">
                 <tr *ngFor="let data of datasource;">
-                    <td 
-                    class="py-4 px-6 border-b border-grey-light hover:text-blue-800 cursor-pointer"
-                    *ngFor="let col of cols" (click)="handleRowClick($event, data, col)">
-                        
+                    <td class="py-4 px-6 border-b border-grey-light hover:text-blue-800 cursor-pointer"
+                        *ngFor="let col of cols" (click)="handleRowClick($event, data, col)">
+
                         <span *ngIf="col.render; else simpleRecord">{{col.render(data[col.key])}}</span>
 
                         <ng-template #simpleRecord>
                             {{data[col.key]}}
                         </ng-template>
-                    
+
                     </td>
                 </tr>
             </tbody>
 
             <ng-template *ngIf="!loading" #empty>
-                <span class="text-gray-500 mx-auto">No Data</span>   
+                <span class="text-gray-500 mx-auto">No Data</span>
             </ng-template>
-        
+            <tfoot *ngIf="pagination">
+                <tr>
+                    <td colspan="100%">
+                        <div class="inline-flex w-full">
+                            <button 
+                                (click)="paginationEvt($e, 'previous')" 
+                                [class.cursor-not-allowed]="!pagination.previous"
+                                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l flex-1">
+                                Prev
+                            </button>
+                            <button 
+                                (click)="paginationEvt($e, 'next')" 
+                                [class.cursor-not-allowed]="!pagination.next" 
+                                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r flex-1">
+                                Next
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
         </table>
     </div>
 </div>

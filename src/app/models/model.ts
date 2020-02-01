@@ -1,5 +1,11 @@
 export abstract class Model {
     count: number;
-    previous: any;
-    next: any;
+    previous: string;
+    next: string;
+}
+
+export interface Pagination {
+    count: number;
+    previous: string;
+    next: string;
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlanetService } from '../services/planet.service';
 import { Planet } from '../models/planet';
+import { Pagination } from '../models/model';
 
 @Component({
   selector: 'app-planets',
@@ -11,16 +12,25 @@ export class PlanetsComponent implements OnInit {
 
   planets: Planet;
   cols = Planet.cols;
+  pagination: Pagination;
+
   constructor(private planetService: PlanetService) { }
 
   ngOnInit() {
-    this.planetService.getPlanets()
-      .subscribe(this.setPlanets);
+    this.setPlanets("https://swapi.co/api/species/");
   }
 
+  reFetchOnPagination(url:string) {
+    this.setPlanets(url);
+  }
 
-  setPlanets = (planets: Planet) => {
-    this.planets = planets;
+  setPlanets = (url) => {
+    this.planetService.getPlanets(url)
+      .subscribe((planets: Planet) => {
+        this.planets = planets;
+        const {count, next, previous} = planets;
+        this.pagination = {count, next, previous};
+      });
   }
 
 }

@@ -9,7 +9,7 @@ import {
 import { Observable } from 'rxjs';
  
 @Injectable()
-export class langInterceptor implements HttpInterceptor {
+export class swappInterceptor implements HttpInterceptor {
     
     constructor() { }
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
