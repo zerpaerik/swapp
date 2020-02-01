@@ -12,13 +12,8 @@ export class StarshipService {
     
   }
 
-  getStarships(): Observable<Starship> {
-    return this.http.get<Starship>("https://swapi.co/api/starships/");
-  }
-
-  getCharacters(urls: Array<string>): Observable<any> {
-    const requests = urls.map(url => this.http.get(url));
-    return forkJoin(requests);
+  getStarships(url:string): Observable<Starship> {
+    return this.http.get<Starship>(url);
   }
 
 }

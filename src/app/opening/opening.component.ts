@@ -54,7 +54,7 @@ export class OpeningComponent implements OnChanges, OnDestroy {
 
   ngOnDestroy() {
     this.removeStars();
-    this.audio.src = '';
+    this.audio.pause();
   }
 
   removeStars() {

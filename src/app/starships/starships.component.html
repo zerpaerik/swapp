@@ -1,5 +1,7 @@
 <app-table 
     [datasource]="starships ? starships.results : null" 
     [cols]="cols"
+    [pagination]="pagination"
+    (onPagination)="reFetchOnPagination($event)"
    >
 </app-table>

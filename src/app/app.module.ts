@@ -12,9 +12,9 @@ import { PlanetsComponent } from './planets/planets.component';
 import { StarshipsComponent } from './starships/starships.component';
 import { TableComponent } from './table/table.component';
 import { toRoman } from './pipes/roman.pipe';
-import { langInterceptor } from './services/lang.interceptor';
+import { swappInterceptor } from './services/swapp.interceptor';
 import { OpeningComponent } from './opening/opening.component';
-import { CharactersComponent } from './characters/characters.component';
+import { CharactersComponent, CharComponent } from './characters/characters.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,8 @@ import { CharactersComponent } from './characters/characters.component';
     TableComponent,
     OpeningComponent,
     toRoman,
-    CharactersComponent
+    CharactersComponent,
+    CharComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +36,7 @@ import { CharactersComponent } from './characters/characters.component';
     BrowserAnimationsModule,
     FormsModule,
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: langInterceptor, multi: true }],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: swappInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

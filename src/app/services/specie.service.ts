@@ -12,13 +12,8 @@ export class SpecieService {
     
   }
 
-  getSpecies(): Observable<Specie> {
-    return this.http.get<Specie>("https://swapi.co/api/species/");
-  }
-
-  getCharacters(urls: Array<string>): Observable<any> {
-    const requests = urls.map(url => this.http.get(url));
-    return forkJoin(requests);
+  getSpecies(url:string): Observable<Specie> {
+    return this.http.get<Specie>(url);
   }
 
 }

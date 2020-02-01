@@ -12,13 +12,8 @@ export class PlanetService {
     
   }
 
-  getPlanets(): Observable<Planet> {
-    return this.http.get<Planet>("https://swapi.co/api/planets/");
-  }
-
-  getCharacters(urls: Array<string>): Observable<any> {
-    const requests = urls.map(url => this.http.get(url));
-    return forkJoin(requests);
+  getPlanets(url:string): Observable<Planet> {
+    return this.http.get<Planet>(url);
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { Pagination } from '../models/model';
 
 @Component({
   selector: 'app-table',
@@ -12,7 +13,10 @@ export class TableComponent implements OnInit, OnChanges {
   @Input('cols') cols : Array<any> = [];
   @Input('datasource') datasource : Array<any>;
   @Input('title') title: string = '';
+  @Input('pagination') pagination: Pagination;
+
   @Output() rowclicked = new EventEmitter();
+  @Output() onPagination = new EventEmitter();
   datasourcebckup = [];
   paginatedDatasource = [];
   loading = true;
@@ -69,11 +73,21 @@ export class TableComponent implements OnInit, OnChanges {
     this.rowclicked.emit({row, col});
   }
 
+  paginationEvt(e, direction:string) {
+    if(this.pagination[direction]) {
+      this.onPagination.emit(this.pagination[direction]);
+    }
+  }
+
   ngOnChanges(changes: SimpleChanges) {
     if(changes.datasource && changes.datasource.currentValue) {
       this.datasource = changes.datasource.currentValue;
       this.datasourcebckup = this.datasource;
       this.loading = false;
+    }
+    if(changes.pagination) {
+      this.pagination = changes.pagination.currentValue;
+      console.log(this.pagination);
     }
   }
 }

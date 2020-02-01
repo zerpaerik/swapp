@@ -1,9 +1,15 @@
 <app-table 
     *ngIf="!openingConfig.show"
-    [datasource]="movies ? movies.results : null" 
+    [datasource]="movies ? movies.results : null"
     [cols]="cols"
     (rowclicked)="movieRowClicked($event)">
 </app-table>
+
+<app-characters 
+    [show]="showCharacters"
+    (close)="openOrCloseCharacters()"
+    [movie]="selectedMovieChars">
+</app-characters>
 
 <app-opening 
     *ngIf="openingConfig.show"

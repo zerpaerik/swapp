@@ -1,0 +1,21 @@
+<div class="flex items-center rounded bg-blue-900 text-white text-sm font-bold px-4 py-3 my-1 cursor-pointer" 
+    role="alert"
+    (click)="showDetails()">
+    <span class="mr-2 text-yellow-300 text-xl">⭐</span>
+    <p class="text-gray-200" *ngIf="!character; else charInfo">Loading...</p>
+    <ng-template #charInfo>
+        <div class="flex-col font-light w-full">
+            
+            <div class="inline-flex justify-between w-full border-red-900 border-solid">
+                <div class="flex-1"><p class="text-gray-100 font-semibold">{{character.name}}</p></div>
+                <div>↕️</div>
+            </div>            
+            
+            <div *ngIf="opened" class="flex-row">
+                <div><p class="text-gray-100 pb-2">Gender: <span class="bg-blue-800 text-gray-100 rounded p-1">{{character.gender}}</span></p></div>
+                <div><p class="text-gray-100 pb-2">Eyes: <span class="bg-blue-800 text-gray-100 rounded p-1">{{character.eye_color}}</span></p></div>
+                <div><p class="text-gray-100 pb-2">Movies: <span class="bg-blue-800 text-gray-100 rounded p-1">{{character.films.length}}</span></p></div>
+            </div>
+        </div>
+    </ng-template>
+</div>
